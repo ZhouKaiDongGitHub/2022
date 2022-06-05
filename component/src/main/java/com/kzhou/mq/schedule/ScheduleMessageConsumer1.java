@@ -1,13 +1,9 @@
 package com.kzhou.mq.schedule;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
-import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
-import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyStatus;
-import org.apache.rocketmq.client.consumer.listener.MessageListenerOrderly;
-import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
+import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
+import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.common.message.MessageExt;
-
-import java.util.List;
 
 /**
  * @Description 类的作用描述
@@ -17,6 +13,15 @@ import java.util.List;
 public class ScheduleMessageConsumer1 {
 
     public static void main(String[] args) throws Exception{
-
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("consumer-group");
+        consumer.setNamesrvAddr("192.168.0.11:9876");
+        consumer.subscribe("delayTopic","*");
+        consumer.registerMessageListener((MessageListenerConcurrently) (messageExtList, consumeConcurrentlyContext) -> {
+            for (MessageExt messageExt : messageExtList) {
+                System.out.println("收到消息：" + new String(messageExt.getBody()));
+            }
+            return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+        });
+        consumer.start();
     }
 }

@@ -17,9 +17,9 @@ import java.util.List;
 public class FilterConsumer {
 
     public static void main(String[] args) throws Exception{
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("test-consumer");
-        consumer.setNamesrvAddr("10.181.124.11:9876");
-        consumer.subscribe("topicFilter", MessageSelector.bySql("a between 0 and 3 and b='name2'"));
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("consumer-group");
+        consumer.setNamesrvAddr("192.168.0.11:9876");
+        consumer.subscribe("filter-topic", MessageSelector.byTag("filter-topic-tagA"));
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> messageExtList, ConsumeConcurrentlyContext consumeConcurrentlyContext) {

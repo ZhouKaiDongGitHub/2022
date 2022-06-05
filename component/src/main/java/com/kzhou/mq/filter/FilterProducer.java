@@ -16,16 +16,21 @@ public class FilterProducer {
     // 环境需要加上配置信息  ## enablePropertyFilter=true
     public static void main(String[] args) throws Exception{
         DefaultMQProducer producer = new DefaultMQProducer("producer-group");
-        producer.setNamesrvAddr("10.181.124.11：9876");
+        producer.setNamesrvAddr("192.168.0.11:9876");
         producer.start();
+        String[] tags = new String[]{"filter-topic-tagA","filter-topic-tagB","filter-topic-tagC"};
 
-        for (int i=0;i<3;i++){
-            Message message = new Message("topicFilter","TAG-FILTER",("hello rocketMq" + i).getBytes(StandardCharsets.UTF_8));
-            message.putUserProperty("a",String.valueOf(i));
-            if(i % 2 ==0){
-                message.putUserProperty("b","name1");
+        for (int i=0;i<30;i++){
+
+            Message message = new Message("filter-topic",tags[i%3],("hello rocketMq" + i).getBytes(StandardCharsets.UTF_8));
+
+
+            if(i % 3 ==0){
+                message.putUserProperty("a","name1");
+            }else if(i % 3 ==1){
+                message.putUserProperty("a","name2");
             }else {
-                message.putUserProperty("b","name2");
+                message.putUserProperty("a","name3");
             }
             producer.send(message);
         }
