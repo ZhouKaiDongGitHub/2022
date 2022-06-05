@@ -1,0 +1,54 @@
+syntax = "proto2";
+package com.kzhou.protobuf;
+option java_package = "com.kzhou.protobuf";
+option java_outer_classname = "AllData";
+
+message Message{
+  enum MessageType{
+    STUDENT = 1;
+    PERSON = 2;
+  }
+  required MessageType message_type = 1;
+  oneof dataBody{
+    Student student = 2;
+    Person person = 3;
+  }
+}
+
+message Student{
+  required string name = 1;
+  optional int32 age = 2;
+  optional string address = 3;
+
+  message IdCard{
+    required string idNumber = 1;
+    required string idType = 2;
+  }
+  optional IdCard idCard = 4;
+  enum PhoneType{
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }
+  optional PhoneType type = 5 [default = HOME];
+}
+
+message Person {
+  optional string name = 1;
+  optional int32 id = 2;
+  optional string email = 3;
+  enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }
+  message PhoneNumber {
+    optional string number = 1;
+    optional PhoneType type = 2 [default = HOME];
+  }
+  repeated PhoneNumber phones = 4;
+}
+
+message AddressBook {
+  repeated Person people = 1;
+}

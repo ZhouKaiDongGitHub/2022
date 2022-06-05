@@ -1,0 +1,28 @@
+syntax = "proto2";
+
+package com.kzhou.protobuf;
+
+option optimize_for = SPEED;
+option java_package = "com.kzhou.protobuf";
+option java_outer_classname = "DataInfo";
+
+message Student{
+  required string name = 1;
+  optional int32 age = 2;
+  optional string address = 3;
+
+  message IdCard{
+    required string idNumber = 1;
+    required string idType = 2;
+  }
+
+  optional IdCard idCard = 4;
+
+  enum PhoneType{
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }
+
+  optional PhoneType type = 5 [default = HOME];
+}

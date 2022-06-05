@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket客户端</title>
+</head>
+<body>
+
+    <form>
+        <textarea name="message" style="width: 400px;height: 200px"></textarea>
+        <input type="button" value="发送数据" onclick="send(this.form.message.value)">
+        <h3>服务端输出：</h3>
+        <textarea id="responseText" style="width: 400px;height: 300px;"></textarea>
+        <input type="button" onclick="javascript: document.getElementById('responseText').value='' " value="清空内容">
+    </form>
+
+    <script type="text/javascript">
+        let socket;
+        if(window.WebSocket){
+            socket = new WebSocket("ws://localhost:8088/ws");
+            socket.onmessage = function (event){
+                let text = document.getElementById('responseText');
+                text.value = text.value + '\n' + event.data
+            }
+            socket.onopen = function (event){
+                let text = document.getElementById('responseText');
+                text.value = '链接打开';
+            }
+            socket.onclose = function (event){
+                let text = document.getElementById('responseText');
+                text.value = text.value + '\n' + "链接关闭"
+            }
+        }else {
+            alert('浏览器不支持WebSocket')
+        }
+
+        function send(message){
+            if(!window.WebSocket){
+                return;
+            }
+            if(socket.readyState == WebSocket.OPEN){
+                socket.send(message)
+            }else {
+                alert("尚未开启链接")
+            }
+        }
+    </script>
+</body>
+</html>

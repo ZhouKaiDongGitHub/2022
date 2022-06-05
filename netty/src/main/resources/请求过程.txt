@@ -1,0 +1,49 @@
+浏览器请求过程：http://localhost:8081/
+
+事件监听:channelRead>>>DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+    GET / HTTP/1.1
+    Host: localhost:8081
+    Connection: keep-alive
+    sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Google Chrome";v="99"
+    sec-ch-ua-mobile: ?0
+    sec-ch-ua-platform: "Windows"
+    Upgrade-Insecure-Requests: 1
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+    Sec-Fetch-Site: none
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-User: ?1
+    Sec-Fetch-Dest: document
+    Accept-Encoding: gzip, deflate, br
+    Accept-Language: zh-CN,zh;q=0.9
+    Cookie: _dx_captcha_cid=24905856; _dx_uzZo5y=2a1510f1e35186351e7154049b000ec383a9f5e034e4c9dde41d77bbfb9deebde4a20987; _dx_app_bc4b3ca6ae27747981b43e9f4a6aa769=620b1e76Nk88eOzDhiHOnIlTvHhyTrVcTSqQr7x1; _dx_captcha_vid=8CA0A4FC1B9C8865D02B9629188BC9A6AEBF8C7D4C84AA07C06BF2FDC5490DC495DA659700FA0BA63235DF55B7EAB65292B7389C04F0B919BE3CF6B8093241666200F1C4155F49C1E4703FAF137D98EE
+事件监听:channelRead>>>EmptyLastHttpContent
+事件监听:channelReadComplete
+
+事件监听:handlerAdded
+事件监听:channelRegistered
+事件监听:channelActive
+事件监听:channelRead>>>DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+    GET /favicon.ico HTTP/1.1
+    Host: localhost:8081
+    Connection: keep-alive
+    sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Google Chrome";v="99"
+    sec-ch-ua-mobile: ?0
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36
+    sec-ch-ua-platform: "Windows"
+    Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+    Sec-Fetch-Site: same-origin
+    Sec-Fetch-Mode: no-cors
+    Sec-Fetch-Dest: image
+    Referer: http://localhost:8081/
+    Accept-Encoding: gzip, deflate, br
+    Accept-Language: zh-CN,zh;q=0.9
+    Cookie: _dx_captcha_cid=24905856; _dx_uzZo5y=2a1510f1e35186351e7154049b000ec383a9f5e034e4c9dde41d77bbfb9deebde4a20987; _dx_app_bc4b3ca6ae27747981b43e9f4a6aa769=620b1e76Nk88eOzDhiHOnIlTvHhyTrVcTSqQr7x1; _dx_captcha_vid=8CA0A4FC1B9C8865D02B9629188BC9A6AEBF8C7D4C84AA07C06BF2FDC5490DC495DA659700FA0BA63235DF55B7EAB65292B7389C04F0B919BE3CF6B8093241666200F1C4155F49C1E4703FAF137D98EE
+事件监听:channelRead>>>EmptyLastHttpContent
+事件监听:channelReadComplete
+
+
+事件监听:channelReadComplete
+事件监听:channelInactive
+事件监听:channelUnregistered
+事件监听:handlerRemoved

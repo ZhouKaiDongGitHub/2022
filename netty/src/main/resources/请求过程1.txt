@@ -1,0 +1,17 @@
+curl请求过程：http://localhost:8081/
+
+事件监听:handlerAdded
+事件监听:channelRegistered
+事件监听:channelActive
+事件监听:channelRead>>>DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+    GET / HTTP/1.1
+    Host: localhost:8081
+    User-Agent: curl/7.79.1
+    Accept: */*
+事件监听:channelRead>>>EmptyLastHttpContent
+事件监听:channelReadComplete
+事件监听:channelReadComplete
+事件监听:channelInactive
+事件监听:channelUnregistered
+事件监听:handlerRemoved
+
